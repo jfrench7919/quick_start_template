@@ -6,8 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MongoModule } from './components/mongo/mongo.module';
 import { NavBarModule } from './components/nav-bar/nav-bar.module';
+import { ReadMeModule } from './components/read-me/read-me.module';
 import { StoreModule } from './components/store/store.module';
-import { TerminalCommandModule } from './components/terminal-command/terminal-command.module';
+import { TerminalCommandModule } from './components/read-me/terminal-command/terminal-command.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TerminalCommandModule } from './components/terminal-command/terminal-co
     MongoModule,
     NavBarModule,
     StoreModule,
-    TerminalCommandModule
+    TerminalCommandModule,
+    ReadMeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

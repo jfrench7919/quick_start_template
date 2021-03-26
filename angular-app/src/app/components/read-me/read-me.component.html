@@ -1,0 +1,39 @@
+<div class="row">
+  <span class="col-12 pt-4">Build and start app</span>
+</div>
+<div class="row">
+  <app-terminal-command
+    [myCommand]="'npm install'"
+    class="col-4"
+  ></app-terminal-command>
+  <app-terminal-command
+    [myCommand]="'ng serve'"
+    class="col-4"
+  ></app-terminal-command>
+</div>
+<div class="row">
+  <span class="col-12 pt-4">Build container and deploy to docker</span>
+</div>
+<div class="row">
+  <app-terminal-command
+    [myCommand]="'docker-compose build --no-cache'"
+    class="col-4"
+  ></app-terminal-command>
+  <app-terminal-command
+    [myCommand]="'docker-compose up --build'"
+    class="col-4"
+  ></app-terminal-command>
+</div>
+<div class="row">
+  <span class="col-12 pt-4">Generate new components for your app</span>
+</div>
+<div class="row">
+  <app-terminal-command
+    [myCommand]="'ng generate module xyz'"
+    class="col-4"
+  ></app-terminal-command>
+  <app-terminal-command
+    [myCommand]="'ng generate component xyz'"
+    class="col-4"
+  ></app-terminal-command>
+</div>
