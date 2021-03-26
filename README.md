@@ -12,6 +12,7 @@ Docker-compose should be version 1.6 or higher.
 
 ### Clone the repo
 
+<<<<<<< HEAD
 ```bash
 $ git clone https://github.com/jfrench7919/quick_mean_docker_template.git
 ```
@@ -23,3 +24,17 @@ $ docker-compose up --build
 ```
 
 App should be running in `localhost:8181`
+=======
+```bash
+$ git clone https://github.com/jfrench7919/quick_mean_docker_template.git
+```
+
+### Run docker
+
+```bash
+$ docker-compose up --build
+```
+
+App should be running in `localhost:8181`
+
+>>>>>>> 265206ec26b4d006eb6538c6b61d5d2fed2f36f1
