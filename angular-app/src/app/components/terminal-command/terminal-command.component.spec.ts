@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppNavBarComponent } from './app-nav-bar.component';
+import { TerminalCommandComponent } from './terminal-command.component';
 
-describe('AppNavBarComponent', () => {
-  let component: AppNavBarComponent;
-  let fixture: ComponentFixture<AppNavBarComponent>;
+describe('TerminalCommandComponent', () => {
+  let component: TerminalCommandComponent;
+  let fixture: ComponentFixture<TerminalCommandComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AppNavBarComponent ]
+      declarations: [ TerminalCommandComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AppNavBarComponent);
+    fixture = TestBed.createComponent(TerminalCommandComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

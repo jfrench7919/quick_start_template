@@ -1,3 +1,5 @@
+<app-nav-bar></app-nav-bar>
+
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
@@ -7,84 +9,10 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<style>
-  .terminal {
-    position: relative;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 6px;
-    padding-top: 45px;
-    margin-top: 8px;
-    overflow: hidden;
-    background-color: rgb(15, 15, 16);
-  }
-
-  .terminal::before {
-    content: "\2022 \2022 \2022";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: rgb(58, 58, 58);
-    color: #c2c3c4;
-    width: 100%;
-    font-size: 2rem;
-    line-height: 0;
-    padding: 14px 0;
-    text-indent: 4px;
-  }
-
-  .terminal pre {
-    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
-    color: white;
-    padding: 0 1rem 1rem;
-    margin: 0;
-  }
-</style>
-
-<div class="container-fluid">
-  <div class="d-flex flex-inline justify-content-between">
-    <div class="navbar-header p-2">
-      <a href="#" class="navbar-brand">Angular App</a>
-    </div>
-    <div class="d-flex align-items-center">
-      <li class="nav navbar-nav p-2">
-        <a href="#">Mongo</a>
-      </li>
-      <li class="nav navbar-nav p-2">
-        <a href="#">NGRX</a>
-      </li>
-    </div>
-  </div>
-</div>
-
-
 <div class="content" role="main">
+  <app-terminal-command [myCommand]="'ng generate component xyz'"></app-terminal-command>
 
-  <!-- Terminal -->
-  <div class="terminal">
-    <pre>ng generate component xyz</pre>
-  </div>
-
-  <button type="button" class="btn btn-primary"
-    (click)="addPerson('New Person - ' + (people.length + 1), people.length + 1)">
-    Primary
-  </button>
-  <table class="table table-dark table-bordered" *ngIf="people.length > 0">
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Age</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let person of people">
-        <td> {{person.name}} </td>
-        <td> {{person.age}} </td>
-      </tr>
-    </tbody>
-  </table>
-
+  <app-mongo></app-mongo>
 </div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
@@ -94,4 +22,5 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
 <router-outlet></router-outlet>
