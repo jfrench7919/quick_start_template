@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { PersonService } from './services/person.service';
 
 @Component({
   selector: 'app-mongo',
@@ -14,7 +15,7 @@ export class MongoComponent implements OnInit {
   // Declare empty list of people
   people: any[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private personService: PersonService) { }
 
   // Angular 2 Life Cycle event when component has been initialized
   ngOnInit() {
@@ -23,19 +24,14 @@ export class MongoComponent implements OnInit {
 
   // Add one person to the API
   addPerson(name: any, age: any) {
-    this.http.post(`${this.API}/users`, { name, age })
-      .subscribe((data: any) => {
-        this.getAllPeople();
-      }, (error: any) => { console.log(error); });
+    this.personService.addPerson(name, age).subscribe(p => {
+      this.getAllPeople();
+    });
   }
 
   // Get all users from the API
   getAllPeople() {
-    this.http.get(`${this.API}/users`)
-      .subscribe((people: any) => {
-        console.log(people)
-        this.people = people
-      }, (error: any) => { console.log(error); });
+    this.personService.getAllPeople().subscribe(p => this.people = p);
   }
 
 }

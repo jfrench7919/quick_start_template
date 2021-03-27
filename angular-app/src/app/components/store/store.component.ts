@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Game } from './models/game.model';
-import * as ScoreboardPageActions from '../../reducers/game.actions';
+import * as ScoreboardPageActions from '../store/actions/game.actions';
 
 
 @Component({

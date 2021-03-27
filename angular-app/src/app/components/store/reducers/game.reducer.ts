@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import * as ScoreboardPageActions from './game.actions';
+import * as ScoreboardPageActions from '../actions/game.actions';
 
 export const scoreboardFeatureKey = 'game';
 
