@@ -2,8 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { AppState } from 'src/app/app.state';
-import { Product } from './models/product.model';
+import { Game } from './models/game.model';
+import * as ScoreboardPageActions from '../../reducers/game.actions';
+
 
 @Component({
   selector: 'app-store',
@@ -13,28 +14,33 @@ import { Product } from './models/product.model';
 export class MyStoreComponent implements OnInit, OnDestroy {
 
   componentDestroyed$ = new Subject<void>();
-  products$: Observable<Product[]>;
-  products: Product[] = [];
-  constructor(private store: Store<AppState>) {
-    this.products$ = this.store.select(state => state.product).pipe(takeUntil(this.componentDestroyed$));
+  game$: Observable<{ game: { home: number, away: number } }>;
+  game: Game = { home: 0, away: 0 };
+
+  constructor(private store: Store<any>) {
+    this.game$ = this.store.select(state => state).pipe(takeUntil(this.componentDestroyed$));
   }
 
   ngOnInit() {
-    this.products$.pipe(takeUntil(this.componentDestroyed$)).subscribe(p => { this.products = p; });
+    this.game$.pipe(takeUntil(this.componentDestroyed$)).subscribe(g => {
+      this.game = g.game;
+    });
   }
 
   ngOnDestroy() {
     this.componentDestroyed$.next();
   }
 
-  addProduct(name: any, price: any) {
-    this.store.dispatch({
-      type: 'ADD_PRODUCT',
-      payload: <Product>{
-        name: name,
-        price: price
-      }
-    });
+  homeUpScore() {
+    this.store.dispatch(ScoreboardPageActions.homeScore());
+  }
+
+  awayUpScore() {
+    this.store.dispatch(ScoreboardPageActions.awayScore());
+  }
+
+  resetScore() {
+    this.store.dispatch(ScoreboardPageActions.resetScore());
   }
 
 }
