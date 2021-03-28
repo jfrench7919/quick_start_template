@@ -1,20 +1,16 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12">
-      <button
-        type="button"
-        class="btn btn-primary"
-        (click)="
+    <div class="col-6">
+      <button type="button" class="btn btn-primary" (click)="
           addPerson('New Person - ' + (people.length + 1), people.length + 1)
-        "
-      >
+        ">
         Click to add person to db
       </button>
     </div>
   </div>
   <div class="row">
-    <div class="col-12 pt-2">
-      <table class="table table-dark table-bordered" *ngIf="people.length > 0">
+    <div class="col-6 pt-2">
+      <table class="table" *ngIf="people.length > 0">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -25,6 +21,9 @@
           <tr *ngFor="let person of people">
             <td>{{ person.name }}</td>
             <td>{{ person.age }}</td>
+            <td>
+              <div type="button" class="btn btn-primary" (click)="deletePerson(person)">Delete</div>
+            </td>
           </tr>
         </tbody>
       </table>

@@ -57,4 +57,15 @@ router.post('/users', (req, res) => {
 	});
 });
 
+router.delete('/users/:id', function (req, res) {
+	var id = req.params.id;
+	User.deleteOne({ _id: id }, function (err, results) {
+		if (err)
+			return console.error(err);
+
+		console.log('User successfully removed from polls collection!');
+		res.status(200).send();
+	});
+});
+
 module.exports = router;

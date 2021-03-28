@@ -18,6 +18,10 @@ export class PersonService {
     return this.http.post(`${this.API}/users`, { name, age }).pipe(take(1));
   }
 
+  deletePerson(person: any): Observable<any> {
+    return this.http.delete(`${this.API}/users/${person._id}`).pipe(take(1));
+  }
+
   // Get all users from the API
   getAllPeople(): Observable<any> {
     return this.http.get(`${this.API}/users`).pipe(take(1));

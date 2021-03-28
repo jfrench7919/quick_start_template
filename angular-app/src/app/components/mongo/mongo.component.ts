@@ -29,6 +29,13 @@ export class MongoComponent implements OnInit {
     });
   }
 
+  deletePerson(person: any) {
+    console.log(person);
+    this.personService.deletePerson(person).subscribe(p => {
+      this.getAllPeople();
+    });
+  }
+
   // Get all users from the API
   getAllPeople() {
     this.personService.getAllPeople().subscribe(p => this.people = p);
