@@ -12,9 +12,6 @@
                 <div (click)="awayUpScore()" class="btn btn-primary">
                   Click if away team scores
                 </div>
-                <div (click)="resetScore()" class="btn btn-primary">
-                  Reset score board
-                </div>
               </div>
             </div>
           </form>
@@ -34,6 +31,61 @@
           </tr>
         </tbody>
       </table>
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <div class="d-flex justify-content-between">
+                <div (click)="resetScore()" class="btn btn-primary">
+                  Reset score board
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <div class="d-flex justify-content-between">
+                <div
+                  (click)="addToRoster({ teamOneName: 'Home', teamOneScore: game.home, teamTwoName: 'Away', teamTwoScore: game.away })"
+                  class="btn btn-primary">
+                  Add game to roster
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <table class="table table-hover" *ngIf="teams.length > 0">
+        <thead>
+          <tr>
+            <td>Team One</td>
+            <td>Team Two</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let team of teams">
+            <td>{{ team.teamOneName + ' - ' + team.teamOneScore }}</td>
+            <td>{{ team.teamTwoName + ' - ' + team.teamTwoScore }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="panel panel-primary">
+        <div class="panel-body">
+          <form>
+            <div class="form-group">
+              <div class="d-flex justify-content-between">
+                <div (click)="resetRoster()" class="btn btn-primary">
+                  Reset roster
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>

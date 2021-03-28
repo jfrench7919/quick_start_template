@@ -4,6 +4,9 @@ import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Game } from './models/game.model';
 import * as ScoreboardPageActions from '../store/actions/game.actions';
+import * as RosterPageActions from '../store/actions/team.actions';
+import { Team } from './models/team.model';
+import { state } from '@angular/animations';
 
 
 @Component({
@@ -14,16 +17,18 @@ import * as ScoreboardPageActions from '../store/actions/game.actions';
 export class MyStoreComponent implements OnInit, OnDestroy {
 
   componentDestroyed$ = new Subject<void>();
-  game$: Observable<{ game: { home: number, away: number } }>;
+  board$: Observable<{ game: { home: number, away: number }, roster: { teams: any[] } }>;
   game: Game = { home: 0, away: 0 };
+  teams: any[] = [];
 
   constructor(private store: Store<any>) {
-    this.game$ = this.store.select(state => state).pipe(takeUntil(this.componentDestroyed$));
+    this.board$ = this.store.select(state => state).pipe(takeUntil(this.componentDestroyed$));
   }
 
   ngOnInit() {
-    this.game$.pipe(takeUntil(this.componentDestroyed$)).subscribe(g => {
+    this.board$.pipe(takeUntil(this.componentDestroyed$)).subscribe(g => {
       this.game = g.game;
+      this.teams = g.roster.teams;
     });
   }
 
@@ -43,4 +48,16 @@ export class MyStoreComponent implements OnInit, OnDestroy {
     this.store.dispatch(ScoreboardPageActions.resetScore());
   }
 
+  resetRoster() {
+    this.store.dispatch(RosterPageActions.resetRoster());
+  }
+
+  addToRoster(newTeams: Team) {
+    // Make deep copy
+    const teamsCopy: any[] = JSON.parse(JSON.stringify(this.teams));
+    teamsCopy.push(newTeams);
+
+    this.store.dispatch(RosterPageActions.addToRoster({ teams: teamsCopy }));
+    this.store.dispatch(ScoreboardPageActions.resetScore());
+  }
 }
