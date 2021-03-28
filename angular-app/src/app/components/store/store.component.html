@@ -1,23 +1,44 @@
 <div class="container-fluid">
+  <div class="text-bold h3">Current Game</div>
   <div class="row">
     <div class="col-6">
-      <div class="panel panel-primary">
-        <div class="panel-body">
-          <form>
-            <div class="form-group">
-              <div class="d-flex justify-content-between">
-                <div (click)="homeUpScore()" class="btn btn-primary">
-                  Click if home team scores
-                </div>
-                <div (click)="awayUpScore()" class="btn btn-primary">
-                  Click if away team scores
-                </div>
-              </div>
-            </div>
-          </form>
+
+      <div class="d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+          <div (click)="homeUpScore()" class="btn btn-primary">
+            Home team scored
+          </div>
+          <div class="p-2">{{'Home team score - ' + game.home}}</div>
+        </div>
+        <div class="d-flex align-items-center">
+          <div (click)="awayUpScore()" class="btn btn-primary">
+            Away team scored
+          </div>
+          <div class="p-2">{{'Away team score - ' + game.away}}</div>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div (click)="resetScore()" class="btn btn-primary">
+            Reset score board
+          </div>
         </div>
       </div>
-      <table class="table table-hover" *ngIf="game">
+    </div>
+  </div>
+  <div class="text-bold h3 pt-4">Old Games</div>
+  <div class="row">
+    <div class="col-3">
+      <div class="d-flex justify-content-between">
+        <div
+          (click)="addToRoster({ teamOneName: 'Home', teamOneScore: game.home, teamTwoName: 'Away', teamTwoScore: game.away })"
+          class="btn btn-primary">
+          Add game to roster
+        </div>
+        <div (click)="resetRoster()" class="btn btn-primary" *ngIf="teams.length > 0">
+          Reset roster
+        </div>
+      </div>
+
+      <table class="table table-hover" *ngIf="teams.length > 0">
         <thead>
           <tr>
             <td>Home Team</td>
@@ -25,67 +46,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>{{ game.home }}</td>
-            <td>{{ game.away }}</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="panel panel-primary">
-        <div class="panel-body">
-          <form>
-            <div class="form-group">
-              <div class="d-flex justify-content-between">
-                <div (click)="resetScore()" class="btn btn-primary">
-                  Reset score board
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="panel panel-primary">
-        <div class="panel-body">
-          <form>
-            <div class="form-group">
-              <div class="d-flex justify-content-between">
-                <div
-                  (click)="addToRoster({ teamOneName: 'Home', teamOneScore: game.home, teamTwoName: 'Away', teamTwoScore: game.away })"
-                  class="btn btn-primary">
-                  Add game to roster
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <table class="table table-hover" *ngIf="teams.length > 0">
-        <thead>
-          <tr>
-            <td>Team One</td>
-            <td>Team Two</td>
-          </tr>
-        </thead>
-        <tbody>
           <tr *ngFor="let team of teams">
-            <td>{{ team.teamOneName + ' - ' + team.teamOneScore }}</td>
-            <td>{{ team.teamTwoName + ' - ' + team.teamTwoScore }}</td>
+            <td>{{team.teamOneScore}}</td>
+            <td>{{team.teamTwoScore}}</td>
           </tr>
         </tbody>
       </table>
-      <div class="panel panel-primary">
-        <div class="panel-body">
-          <form>
-            <div class="form-group">
-              <div class="d-flex justify-content-between">
-                <div (click)="resetRoster()" class="btn btn-primary">
-                  Reset roster
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
     </div>
   </div>
 </div>
