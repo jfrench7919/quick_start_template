@@ -1,0 +1,18 @@
+services:
+  dockercomposeproductapi:
+    image: dockercomposeproductapi
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5051:80"
+    links:
+      - sqldata
+
+  sqldata:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5434:1433"
