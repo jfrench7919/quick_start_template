@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 
-namespace DockerComposeProductApi.Models
+namespace QuickProductApi.Models
 {
     public partial class SampleDataContext : DbContext
     {

@@ -1,12 +1,12 @@
-﻿using DockerComposeProductApi.Models;
+﻿using QuickProductApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DockerComposeProductApi.Repos;
+using QuickProductApi.Repos;
 using Microsoft.Extensions.Configuration;
 
-namespace DockerComposeProductApi.Services
+namespace QuickProductApi.Services
 {
     public class ProductsService : IProductsService
     {

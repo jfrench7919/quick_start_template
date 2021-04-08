@@ -1,9 +1,9 @@
-using DockerComposeProductApi.Models;
+using QuickProductApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DockerComposeProductApi.Repos
+namespace QuickProductApi.Repos
 {
     public class ProductRepo
     {

@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "DockerComposeProductApi": {
+    "QuickProductApi": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/product",

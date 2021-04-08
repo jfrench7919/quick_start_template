@@ -1,6 +1,6 @@
 services:
-  dockercomposeproductapi:
-    image: dockercomposeproductapi
+  quick-product-api:
+    image: quick-product-api
     build:
       context: .
       dockerfile: Dockerfile

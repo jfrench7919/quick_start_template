@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DockerComposeProductApi.Services;
+using QuickProductApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DockerComposeProductApi.Controllers
+namespace QuickProductApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace DockerComposeProductApi.Models
+namespace QuickProductApi.Models
 {
     public partial class Product
     {

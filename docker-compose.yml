@@ -15,8 +15,8 @@ services:
     links:
       - database
   
-  dockercomposeproductapi:
-    build: DockerComposeProductApi
+  quick-product-api:
+    build: quick-product-api
     ports:
       - "5051:80"
     links:
