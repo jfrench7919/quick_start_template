@@ -13,8 +13,8 @@ services:
     ports:
       - "3000:3000" #specify ports forewarding
     links:
-      - database
-  
+      - mongodata
+
   quick-product-api:
     build: quick-product-api
     ports:
@@ -30,7 +30,7 @@ services:
     ports:
       - "5434:1433"
 
-  database: # name of the third service
+  mongodata: # name of the third service
     image: mongo # specify image to build container from
     ports:
       - "27017:27017" # specify port forewarding
